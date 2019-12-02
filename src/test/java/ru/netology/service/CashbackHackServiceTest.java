@@ -19,9 +19,16 @@ class CashbackHackServiceTest {
     }
 
     @Test
-    void shouldReturnMessageIfAmountIsLowerOrEquals0() {
+    void shouldReturnMessageIfAmountIsEquals0() {
         CashbackHackService cashbackHackService = new CashbackHackService();
         int amount = 0;
+
+        assertThrows(IllegalArgumentException.class, () -> cashbackHackService.remain(amount));
+    }
+    @Test
+    void shouldReturnMessageIfAmountIsLower0() {
+        CashbackHackService cashbackHackService = new CashbackHackService();
+        int amount = -1;
 
         assertThrows(IllegalArgumentException.class, () -> cashbackHackService.remain(amount));
     }
